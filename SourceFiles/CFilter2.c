@@ -22,6 +22,8 @@
 #include "IEcoInterfaceBus1.h"
 #include "IEcoInterfaceBus1MemExt.h"
 #include "CFilter2.h"
+#include "CCalculator.h"
+#include "IEcoCalculator.h"
 
 /*
  *
@@ -37,26 +39,35 @@
 static int16_t ECOCALLMETHOD CFilter2_D49144FE_QueryInterface(/* in */ IFilter2Ptr_t me, /* in */ const UGUID* riid, /* out */ void** ppv) {
     CFilter2_D49144FE* pCMe = (CFilter2_D49144FE*)me;
 
-    /* Pointer Validation */
     if (me == 0 || ppv == 0) {
         return ERR_ECO_POINTER;
     }
 
-    /* Validate and retrieve requested interface */
-    if ( IsEqualUGUID(riid, &IID_IFilter2) ) {
+    if (IsEqualUGUID(riid, &IID_IFilter2)) {
         *ppv = &pCMe->m_pVTblIFilter2;
         pCMe->m_pVTblIFilter2->AddRef((IFilter2*)pCMe);
+        return ERR_ECO_SUCCESS;
     }
-	
-    else if ( IsEqualUGUID(riid, &IID_IEcoUnknown) ) {
+
+    if (IsEqualUGUID(riid, &IID_IEcoUnknown)) {
+        if (pCMe->m_pIUnkInner != 0) {
+            return pCMe->m_pIUnkInner->pVTbl->QueryInterface(pCMe->m_pIUnkInner, riid, ppv);
+        }
         *ppv = &pCMe->m_pVTblIFilter2;
         pCMe->m_pVTblIFilter2->AddRef((IFilter2*)pCMe);
+        return ERR_ECO_SUCCESS;
     }
-    else {
-        *ppv = 0;
-        return ERR_ECO_NOINTERFACE;
+
+    if (IsEqualUGUID(riid, &IID_IEcoCalculator)) {
+        if (pCMe->m_pIUnkInner == 0) {
+            *ppv = 0;
+            return ERR_ECO_NOINTERFACE;
+        }
+        return pCMe->m_pIUnkInner->pVTbl->QueryInterface(pCMe->m_pIUnkInner, riid, ppv);
     }
-    return ERR_ECO_SUCCESS;
+
+    *ppv = 0;
+    return ERR_ECO_NOINTERFACE;
 }
 
 /*
@@ -73,9 +84,8 @@ static int16_t ECOCALLMETHOD CFilter2_D49144FE_QueryInterface(/* in */ IFilter2P
 static uint32_t ECOCALLMETHOD CFilter2_D49144FE_AddRef(/* in */ IFilter2Ptr_t me) {
     CFilter2_D49144FE* pCMe = (CFilter2_D49144FE*)me;
 
-    /* Pointer Validation */
     if (me == 0 ) {
-        return -1; /* ERR_ECO_POINTER */
+        return -1;
     }
 
     return ++pCMe->m_cRef;
@@ -95,17 +105,16 @@ static uint32_t ECOCALLMETHOD CFilter2_D49144FE_AddRef(/* in */ IFilter2Ptr_t me
 static uint32_t ECOCALLMETHOD CFilter2_D49144FE_Release(/* in */ IFilter2Ptr_t me) {
     CFilter2_D49144FE* pCMe = (CFilter2_D49144FE*)me;
 
-    /* Pointer Validation */
     if (me == 0 ) {
-        return -1; /* ERR_ECO_POINTER */
+        return -1;
     }
 
-    /* Decrementing the component's reference count */
     --pCMe->m_cRef;
-    /* If the count is zero, free the instance data */
     if ( pCMe->m_cRef == 0 ) {
+        if (pCMe->m_pIUnkInner != 0) {
+            pCMe->m_pIUnkInner->pVTbl->Release(pCMe->m_pIUnkInner);
+        }
         pCMe->Delete(pCMe);
-		
         return 0;
     }
     return pCMe->m_cRef;
@@ -122,6 +131,67 @@ static uint32_t ECOCALLMETHOD CFilter2_D49144FE_Release(/* in */ IFilter2Ptr_t m
  * </description>
  *
  */
+static double ECOCALLMETHOD CFilter2_D49144FE_CalcAdd(IEcoCalculatorPtr_t me, double a, double b) {
+    (void)me;
+    return a + b;
+}
+
+static double ECOCALLMETHOD CFilter2_D49144FE_CalcSub(IEcoCalculatorPtr_t me, double a, double b) {
+    (void)me;
+    return a - b;
+}
+
+static double ECOCALLMETHOD CFilter2_D49144FE_CalcMul(IEcoCalculatorPtr_t me, double a, double b) {
+    (void)me;
+    return a * b;
+}
+
+static double ECOCALLMETHOD CFilter2_D49144FE_CalcDiv(IEcoCalculatorPtr_t me, double a, double b) {
+    (void)me;
+    return (b == 0.0) ? 0.0 : a / b;
+}
+
+static int16_t ECOCALLMETHOD CFilter2_D49144FE_CalcQueryInterface(IEcoCalculatorPtr_t me, const UGUID* riid, void** ppv) {
+    CFilter2_D49144FE* pCMe = (CFilter2_D49144FE*)me;
+
+    if (me == 0 || ppv == 0) {
+        return ERR_ECO_POINTER;
+    }
+
+    if (IsEqualUGUID(riid, &IID_IEcoCalculator)) {
+        if (pCMe->m_pIUnkInner == 0) {
+            *ppv = 0;
+            return ERR_ECO_NOINTERFACE;
+        }
+        return pCMe->m_pIUnkInner->pVTbl->QueryInterface(pCMe->m_pIUnkInner, riid, ppv);
+    }
+
+    if (IsEqualUGUID(riid, &IID_IEcoUnknown)) {
+        if (pCMe->m_pIUnkInner == 0) {
+            *ppv = 0;
+            return ERR_ECO_NOINTERFACE;
+        }
+        return pCMe->m_pIUnkInner->pVTbl->QueryInterface(pCMe->m_pIUnkInner, riid, ppv);
+    }
+
+    if (IsEqualUGUID(riid, &IID_IFilter2)) {
+        *ppv = &pCMe->m_pVTblIFilter2;
+        pCMe->m_pVTblIFilter2->AddRef((IFilter2*)pCMe);
+        return ERR_ECO_SUCCESS;
+    }
+
+    *ppv = 0;
+    return ERR_ECO_NOINTERFACE;
+}
+
+static uint32_t ECOCALLMETHOD CFilter2_D49144FE_CalcAddRef(IEcoCalculatorPtr_t me) {
+    return CFilter2_D49144FE_AddRef((IFilter2Ptr_t)me);
+}
+
+static uint32_t ECOCALLMETHOD CFilter2_D49144FE_CalcRelease(IEcoCalculatorPtr_t me) {
+    return CFilter2_D49144FE_Release((IFilter2Ptr_t)me);
+}
+
 static int16_t ECOCALLMETHOD CFilter2_D49144FE_Filter2(/* in */ IFilter2Ptr_t me, 
                                                        /* in */ uint32_t rows,
                                                        /* in */ uint32_t cols,
@@ -193,40 +263,42 @@ static int16_t ECOCALLMETHOD initCFilter2_D49144FE(/*in*/ CFilter2_D49144FEPtr_t
     CFilter2_D49144FE* pCMe = (CFilter2_D49144FE*)me;
     IEcoInterfaceBus1* pIBus = 0;
     IEcoInterfaceBus1MemExt* pIMemExt = 0;
+    IEcoUnknown* pOuterUnknown = (IEcoUnknown*)me;
     int16_t result = ERR_ECO_POINTER;
-    UGUID* rcid = (UGUID*)&CID_EcoMemoryManager1;	
+    UGUID* rcid = (UGUID*)&CID_EcoMemoryManager1;
 
-    /* Pointer Validation */
-    if (me == 0 ) {
+    if (me == 0) {
         return result;
     }
 
-    /* Storing the pointer to the system interface */
     pCMe->m_pISys = (IEcoSystem1*)pIUnkSystem;
+    pCMe->m_pIUnkInner = 0;
 
-    /* Getting the interface for working with the interface bus */
     result = pCMe->m_pISys->pVTbl->QueryInterface(pCMe->m_pISys, &IID_IEcoInterfaceBus1, (void **)&pIBus);
+    if (result != 0 || pIBus == 0) {
+        return result;
+    }
 
-    /* Getting the component ID for working with memory */
     result = pIBus->pVTbl->QueryInterface(pIBus, &IID_IEcoInterfaceBus1MemExt, (void**)&pIMemExt);
     if (result == 0 && pIMemExt != 0) {
         rcid = (UGUID*)pIMemExt->pVTbl->get_Manager(pIMemExt);
         pIMemExt->pVTbl->Release(pIMemExt);
     }
 
-    /* Getting the memory allocator interface */
     result = pIBus->pVTbl->QueryComponent(pIBus, rcid, 0, &IID_IEcoMemoryAllocator1, (void**) &pCMe->m_pIMem);
-    /* Check */
     if (result != 0 || pCMe->m_pIMem == 0) {
-        result = ERR_ECO_GET_MEMORY_ALLOCATOR;
+        pIBus->pVTbl->Release(pIBus);
+        return ERR_ECO_GET_MEMORY_ALLOCATOR;
     }
 
-
-
-    /* Freeing */
+    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_Calculator, pOuterUnknown, &IID_IEcoUnknown, (void**)&pCMe->m_pIUnkInner);
     pIBus->pVTbl->Release(pIBus);
 
-    return result;
+    if (result != 0 || pCMe->m_pIUnkInner == 0) {
+        return ERR_ECO_NOINTERFACE;
+    }
+
+    return ERR_ECO_SUCCESS;
 }
 
 /*
@@ -241,15 +313,11 @@ static int16_t ECOCALLMETHOD initCFilter2_D49144FE(/*in*/ CFilter2_D49144FEPtr_t
  *
  */
 static int16_t ECOCALLMETHOD createCFilter2_D49144FE(/* in */ CFilter2_D49144FEPtr_t pCMe, /* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter) {
-    int16_t result = ERR_ECO_POINTER;
-
-    /* Pointer Validation */
+    (void)pIUnkOuter;
     if (pCMe == 0) {
-        return result; /* ERR_ECO_POINTER */
+        return ERR_ECO_POINTER;
     }
-
-
-    return ERR_ECO_SUCCESS;
+    return initCFilter2_D49144FE(pCMe, pIUnkSystem);
 }
 
 /*
@@ -288,18 +356,28 @@ IFilter2VTbl g_x75628C33E1CC4AC2B9DADEA51CFA9C9AVTbl_D49144FE = {
     CFilter2_D49144FE_Filter2
 };
 
-
+IEcoCalculatorVTbl g_xIEcoCalculator_VTbl_D49144FE = {
+    CFilter2_D49144FE_CalcQueryInterface,
+    CFilter2_D49144FE_CalcAddRef,
+    CFilter2_D49144FE_CalcRelease,
+    CFilter2_D49144FE_CalcAdd,
+    CFilter2_D49144FE_CalcSub,
+    CFilter2_D49144FE_CalcMul,
+    CFilter2_D49144FE_CalcDiv
+};
 
 /* Object Instance */
 CFilter2_D49144FE g_xCFilter2_D49144FE = {
     &g_x75628C33E1CC4AC2B9DADEA51CFA9C9AVTbl_D49144FE,
+    &g_xIEcoCalculator_VTbl_D49144FE,
     initCFilter2_D49144FE,
     createCFilter2_D49144FE,
     deleteCFilter2_D49144FE,
     1, /* m_cRef */
+    0, /* m_pIMem */
     0, /* m_pISys */
-    0, /* m_pISys */
-    0  /* m_Name */
+    0, /* m_Name */
+0  /* m_pIUnkInner */
 };
 
 typedef struct CFilter2Factory_D49144FE {
@@ -374,6 +452,7 @@ static int16_t ECOCALLMETHOD CFilter2Factory_D49144FE_Alloc(IEcoComponentFactory
 
     if (IsEqualUGUID(riid, &IID_IEcoUnknown) || IsEqualUGUID(riid, &IID_IFilter2)) {
         *ppv = &g_xCFilter2_D49144FE;
+        g_xCFilter2_D49144FE.Init(&g_xCFilter2_D49144FE, pISystem);
         ((IFilter2Ptr_t)*ppv)->pVTbl->AddRef((IFilter2Ptr_t)*ppv);
         return ERR_ECO_SUCCESS;
     }

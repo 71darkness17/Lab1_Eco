@@ -25,6 +25,8 @@
 #include "IdEcoFileSystemManagement1.h"
 #include "IFilter2.h"
 #include "CFilter2.h"
+#include "CCalculator.h"
+#include "IEcoCalculator.h"
 
 #include <math.h>
 #include <stdio.h>
@@ -44,6 +46,7 @@
     } while(0)
 
 extern CFilter2_D49144FE g_xCFilter2_D49144FE;
+extern IEcoComponentFactory* GetIEcoComponentFactoryPtr_22AA44FE(void);
 
 static int Filter2_TestArraysEqual(
     const double* actual,
@@ -426,6 +429,8 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     char_t* name = 0;
 
     IFilter2Ptr_t pIFilter = 0;
+    IEcoCalculator* pICalc = 0;
+    double calcResult = 0.0;
 
     /* System interface check and creation */
     if (pISys == 0) {
@@ -461,6 +466,11 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     /* Free the memory block */
     pIMem->pVTbl->Free(pIMem, name);
 
+    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_Calculator, (IEcoUnknown*)GetIEcoComponentFactoryPtr_Calculator());
+    if (result != 0) {
+        goto Release;
+    }
+
     result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_Filter2, (IEcoUnknown*)GetIEcoComponentFactoryPtr_D49144FE());
     if (result != 0) {
         goto Release;
@@ -470,6 +480,18 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     if (result != 0 || pIFilter == 0) {
         goto Release;
     }
+
+    /* Inner Component Tests*/
+    result = pIFilter->pVTbl->QueryInterface(pIFilter, &IID_IEcoCalculator, (void**)&pICalc);
+    VALIDATE_OR_GOTO(result == ERR_ECO_SUCCESS && pICalc != 0, Release);
+    calcResult = pICalc->pVTbl->Addition(pICalc, 3.0, 5.0);
+    VALIDATE_OR_GOTO(fabs(calcResult - 8.0) <= 1e-9, Release);
+    calcResult = pICalc->pVTbl->Subtraction(pICalc, 5.0, 3.0);
+    VALIDATE_OR_GOTO(fabs(calcResult - 2.0) <= 1e-9, Release);
+    calcResult = pICalc->pVTbl->Multiplication(pICalc, 6.0, 7.0);
+    VALIDATE_OR_GOTO(fabs(calcResult - 42.0) <= 1e-9, Release);
+    calcResult = pICalc->pVTbl->Division(pICalc, 21.0, 7.0);
+    VALIDATE_OR_GOTO(fabs(calcResult - 3.0) <= 1e-9, Release);
 
     /* Unit Tests */
     VALIDATE_OR_GOTO(TestFilter2_IdentityKernel(pIFilter), Release);

@@ -144,7 +144,8 @@ LIBS = $(LIB_DIR) $(LIBS_TARGET)
 
 # --- Source and Object Files ---
 SRC_C = ..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)Lab1.c \
-        ..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CFilter2.c
+        ..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CFilter2.c \
+        ..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CCalculator.c
 SRC_S = 
 
 OBJ = $(SRC_C:.c=.o)

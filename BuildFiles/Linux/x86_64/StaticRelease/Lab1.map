@@ -32,6 +32,8 @@ Merging program properties
 Removed property 0xc0000002 to merge /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o (not found) and /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o (0x3)
 Removed property 0xc0010001 to merge /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o (0x1) and ../../../SourceFiles/Lab1.o (not found)
 Removed property 0xc0010002 to merge /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o (0x0) and ../../../SourceFiles/Lab1.o (not found)
+Removed property 0xc0000002 to merge /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o (not found) and ../../../SourceFiles/CFilter2.o (0x3)
+Removed property 0xc0000002 to merge /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o (not found) and ../../../SourceFiles/CCalculator.o (0x3)
 Removed property 0xc0000002 to merge /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o (not found) and /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o) (0x3)
 Removed property 0xc0000002 to merge /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o (not found) and /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o) (0x3)
 Removed property 0xc0000002 to merge /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o (not found) and /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o) (0x3)
@@ -67,6 +69,12 @@ Discarded input sections
                 0x0000000000000000        0x0 ../../../SourceFiles/Lab1.o
  .note.GNU-stack
                 0x0000000000000000        0x0 ../../../SourceFiles/CFilter2.o
+ .note.gnu.property
+                0x0000000000000000       0x20 ../../../SourceFiles/CFilter2.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 ../../../SourceFiles/CCalculator.o
+ .note.gnu.property
+                0x0000000000000000       0x20 ../../../SourceFiles/CCalculator.o
  .note.GNU-stack
                 0x0000000000000000        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
  .note.gnu.property
@@ -140,6 +148,7 @@ LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib
 LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
 LOAD ../../../SourceFiles/Lab1.o
 LOAD ../../../SourceFiles/CFilter2.o
+LOAD ../../../SourceFiles/CCalculator.o
 LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/libm.so
 START GROUP
 LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0//lib64/libm.so.6
@@ -292,7 +301,7 @@ LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib
 .plt.sec
  *(.plt.sec)
 
-.text           0x0000000000401190     0x82b6
+.text           0x0000000000401190     0x9156
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  *(.text.exit .text.exit.*)
  *(.text.startup .text.startup.*)
@@ -309,176 +318,186 @@ LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib
  *fill*         0x0000000000401221        0xf 
  .text          0x0000000000401230       0xa6 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
  *fill*         0x00000000004012d6        0xa 
- .text          0x00000000004012e0      0xc20 ../../../SourceFiles/Lab1.o
+ .text          0x00000000004012e0      0xebe ../../../SourceFiles/Lab1.o
                 0x0000000000401690                EcoMain
- .text          0x0000000000401f00      0x836 ../../../SourceFiles/CFilter2.o
-                0x0000000000402730                GetIEcoComponentFactoryPtr_D49144FE
- .text          0x0000000000402736        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
- *fill*         0x0000000000402736        0xa 
- .text          0x0000000000402740     0x36d9 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
-                0x0000000000405040                CEcoSystem1_00000100_IEcoSystemInformation1_AddRef
-                0x0000000000405320                CEcoSystem1_00000100_LoadComponent
-                0x00000000004057f0                createCEcoSystem1_00000100
-                0x0000000000405aa0                deleteCEcoSystem1_00000100
-                0x0000000000405ba0                CEcoSystem1_00000100_IEcoSystemInformation1_Release
- *fill*         0x0000000000405e19        0x7 
- .text          0x0000000000405e20      0x243 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
-                0x0000000000406030                IsEqualUGUID_00000000000000000000000042757331
- *fill*         0x0000000000406063        0xd 
- .text          0x0000000000406070      0xe91 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
-                0x0000000000406db0                initCEcoInterfaceBus1_42757331
-                0x0000000000406dc0                createCEcoInterfaceBus1_42757331
-                0x0000000000406e90                deleteCEcoInterfaceBus1_42757331
- *fill*         0x0000000000406f01        0xf 
- .text          0x0000000000406f10      0x336 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
- *fill*         0x0000000000407246        0xa 
- .text          0x0000000000407250      0x3c1 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
-                0x0000000000407540                initCEcoMemoryManager1_4D656D31
-                0x0000000000407550                createCEcoMemoryManager1_4D656D31
-                0x00000000004075f0                deleteCEcoMemoryManager1_4D656D31
- *fill*         0x0000000000407611        0xf 
- .text          0x0000000000407620      0x4b2 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
- *fill*         0x0000000000407ad2        0xe 
- .text          0x0000000000407ae0      0x356 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
- *fill*         0x0000000000407e36        0xa 
- .text          0x0000000000407e40      0x551 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
-                0x00000000004081d0                initCEcoFileSystemManagement1_46534D31
-                0x00000000004081e0                createCEcoFileSystemManagement1_46534D31
-                0x0000000000408340                deleteCEcoFileSystemManagement1_46534D31
- *fill*         0x0000000000408391        0xf 
- .text          0x00000000004083a0      0x391 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
-                0x00000000004085d0                createCEcoDirectoryManager1_46534D31
-                0x0000000000408700                deleteCEcoDirectoryManager1_46534D31
- *fill*         0x0000000000408731        0xf 
- .text          0x0000000000408740      0x451 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
-                0x0000000000408880                CEcoFileManager1_46534D31_AddRef
-                0x0000000000408a00                createCEcoFileManager1_46534D31
-                0x0000000000408b40                deleteCEcoFileManager1_46534D31
- *fill*         0x0000000000408b91        0xf 
- .text          0x0000000000408ba0      0x399 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
-                0x0000000000408d90                createCEcoDirectoryInfo1_46534D31
-                0x0000000000408ee0                deleteCEcoDirectoryInfo1_46534D31
- *fill*         0x0000000000408f39        0x7 
- .text          0x0000000000408f40      0x506 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
-                0x00000000004091c0                createCEcoFile1_46534D31
-                0x0000000000409390                deleteCEcoFile1_46534D31
- .text          0x0000000000409446        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
- .text          0x0000000000409446        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crtn.o
+ *fill*         0x000000000040219e        0x2 
+ .text          0x00000000004021a0      0xcdc ../../../SourceFiles/CFilter2.o
+                0x0000000000402e70                GetIEcoComponentFactoryPtr_D49144FE
+ *fill*         0x0000000000402e7c        0x4 
+ .text          0x0000000000402e80      0x75c ../../../SourceFiles/CCalculator.o
+                0x00000000004035d0                GetIEcoComponentFactoryPtr_Calculator
+ .text          0x00000000004035dc        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
+ *fill*         0x00000000004035dc        0x4 
+ .text          0x00000000004035e0     0x36d9 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+                0x0000000000405ee0                CEcoSystem1_00000100_IEcoSystemInformation1_AddRef
+                0x00000000004061c0                CEcoSystem1_00000100_LoadComponent
+                0x0000000000406690                createCEcoSystem1_00000100
+                0x0000000000406940                deleteCEcoSystem1_00000100
+                0x0000000000406a40                CEcoSystem1_00000100_IEcoSystemInformation1_Release
+ *fill*         0x0000000000406cb9        0x7 
+ .text          0x0000000000406cc0      0x243 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
+                0x0000000000406ed0                IsEqualUGUID_00000000000000000000000042757331
+ *fill*         0x0000000000406f03        0xd 
+ .text          0x0000000000406f10      0xe91 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+                0x0000000000407c50                initCEcoInterfaceBus1_42757331
+                0x0000000000407c60                createCEcoInterfaceBus1_42757331
+                0x0000000000407d30                deleteCEcoInterfaceBus1_42757331
+ *fill*         0x0000000000407da1        0xf 
+ .text          0x0000000000407db0      0x336 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
+ *fill*         0x00000000004080e6        0xa 
+ .text          0x00000000004080f0      0x3c1 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
+                0x00000000004083e0                initCEcoMemoryManager1_4D656D31
+                0x00000000004083f0                createCEcoMemoryManager1_4D656D31
+                0x0000000000408490                deleteCEcoMemoryManager1_4D656D31
+ *fill*         0x00000000004084b1        0xf 
+ .text          0x00000000004084c0      0x4b2 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
+ *fill*         0x0000000000408972        0xe 
+ .text          0x0000000000408980      0x356 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
+ *fill*         0x0000000000408cd6        0xa 
+ .text          0x0000000000408ce0      0x551 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
+                0x0000000000409070                initCEcoFileSystemManagement1_46534D31
+                0x0000000000409080                createCEcoFileSystemManagement1_46534D31
+                0x00000000004091e0                deleteCEcoFileSystemManagement1_46534D31
+ *fill*         0x0000000000409231        0xf 
+ .text          0x0000000000409240      0x391 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
+                0x0000000000409470                createCEcoDirectoryManager1_46534D31
+                0x00000000004095a0                deleteCEcoDirectoryManager1_46534D31
+ *fill*         0x00000000004095d1        0xf 
+ .text          0x00000000004095e0      0x451 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
+                0x0000000000409720                CEcoFileManager1_46534D31_AddRef
+                0x00000000004098a0                createCEcoFileManager1_46534D31
+                0x00000000004099e0                deleteCEcoFileManager1_46534D31
+ *fill*         0x0000000000409a31        0xf 
+ .text          0x0000000000409a40      0x399 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
+                0x0000000000409c30                createCEcoDirectoryInfo1_46534D31
+                0x0000000000409d80                deleteCEcoDirectoryInfo1_46534D31
+ *fill*         0x0000000000409dd9        0x7 
+ .text          0x0000000000409de0      0x506 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+                0x000000000040a060                createCEcoFile1_46534D31
+                0x000000000040a230                deleteCEcoFile1_46534D31
+ .text          0x000000000040a2e6        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
+ .text          0x000000000040a2e6        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crtn.o
  *(.gnu.warning)
 
-.fini           0x0000000000409448        0x9
+.fini           0x000000000040a2e8        0x9
  *(SORT_NONE(.fini))
- .fini          0x0000000000409448        0x4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crti.o
-                0x0000000000409448                _fini
- .fini          0x000000000040944c        0x5 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crtn.o
+ .fini          0x000000000040a2e8        0x4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crti.o
+                0x000000000040a2e8                _fini
+ .fini          0x000000000040a2ec        0x5 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crtn.o
                 [!provide]                        PROVIDE (__etext = .)
                 [!provide]                        PROVIDE (_etext = .)
                 [!provide]                        PROVIDE (etext = .)
-                0x000000000040a000                . = ALIGN (CONSTANT (MAXPAGESIZE))
-                0x000000000040a000                . = SEGMENT_START ("rodata-segment", (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1))))
+                0x000000000040b000                . = ALIGN (CONSTANT (MAXPAGESIZE))
+                0x000000000040b000                . = SEGMENT_START ("rodata-segment", (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1))))
 
-.rodata         0x000000000040a000      0xa82
+.rodata         0x000000000040b000      0xc42
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata.cst4   0x000000000040a000        0x4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
-                0x000000000040a000                _IO_stdin_used
- *fill*         0x000000000040a004        0x4 
+ .rodata.cst4   0x000000000040b000        0x4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+                0x000000000040b000                _IO_stdin_used
+ *fill*         0x000000000040b004        0x4 
  .rodata.str1.8
-                0x000000000040a008      0x26d ../../../SourceFiles/Lab1.o
-                                        0x1b7 (size before relaxing)
+                0x000000000040b008      0x31d ../../../SourceFiles/Lab1.o
+                                        0x267 (size before relaxing)
  .rodata.str1.1
-                0x000000000040a275      0x12f ../../../SourceFiles/Lab1.o
+                0x000000000040b325      0x13b ../../../SourceFiles/Lab1.o
                                          0xcc (size before relaxing)
- *fill*         0x000000000040a3a4        0xc 
- .rodata        0x000000000040a3b0       0xb2 ../../../SourceFiles/Lab1.o
- *fill*         0x000000000040a462        0x6 
- .rodata.cst8   0x000000000040a468       0x38 ../../../SourceFiles/Lab1.o
- .rodata.cst16  0x000000000040a4a0       0xf0 ../../../SourceFiles/Lab1.o
+ .rodata        0x000000000040b460       0xf2 ../../../SourceFiles/Lab1.o
+ *fill*         0x000000000040b552        0x6 
+ .rodata.cst8   0x000000000040b558       0x40 ../../../SourceFiles/Lab1.o
+ *fill*         0x000000000040b598        0x8 
+ .rodata.cst16  0x000000000040b5a0       0xf0 ../../../SourceFiles/Lab1.o
                                          0xd0 (size before relaxing)
  .rodata.str1.1
-                0x000000000040a590       0x21 ../../../SourceFiles/CFilter2.o
- .rodata        0x000000000040a590       0x72 ../../../SourceFiles/CFilter2.o
+                0x000000000040b690       0x21 ../../../SourceFiles/CFilter2.o
+ .rodata        0x000000000040b690       0xb2 ../../../SourceFiles/CFilter2.o
+ .rodata.str1.1
+                0x000000000040b742       0x24 ../../../SourceFiles/CCalculator.o
+ *fill*         0x000000000040b742        0xe 
+ .rodata        0x000000000040b750       0x72 ../../../SourceFiles/CCalculator.o
  .rodata.str1.8
-                0x000000000040a602       0x69 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+                0x000000000040b7c2       0x69 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
  .rodata.str1.1
-                0x000000000040a602       0x2c /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
- *fill*         0x000000000040a602        0xe 
- .rodata        0x000000000040a610       0xf2 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
- .rodata.cst16  0x000000000040a702       0x20 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
- *fill*         0x000000000040a702        0xe 
- .rodata        0x000000000040a710       0x32 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
+                0x000000000040b7c2       0x2c /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+ *fill*         0x000000000040b7c2        0xe 
+ .rodata        0x000000000040b7d0       0xf2 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+ .rodata.cst16  0x000000000040b8c2       0x20 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+ *fill*         0x000000000040b8c2        0xe 
+ .rodata        0x000000000040b8d0       0x32 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
  .rodata.str1.8
-                0x000000000040a742       0x85 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+                0x000000000040b902       0x85 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
  .rodata.str1.1
-                0x000000000040a742       0x3c /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
- *fill*         0x000000000040a742        0xe 
- .rodata        0x000000000040a750       0xb2 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
- .rodata.cst16  0x000000000040a802       0x20 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
- *fill*         0x000000000040a802        0xe 
- .rodata        0x000000000040a810       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
- *fill*         0x000000000040a882        0xe 
- .rodata        0x000000000040a890       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
- *fill*         0x000000000040a902        0xe 
- .rodata        0x000000000040a910       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
- *fill*         0x000000000040a982        0xe 
- .rodata        0x000000000040a990       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
+                0x000000000040b902       0x3c /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+ *fill*         0x000000000040b902        0xe 
+ .rodata        0x000000000040b910       0xb2 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+ .rodata.cst16  0x000000000040b9c2       0x20 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+ *fill*         0x000000000040b9c2        0xe 
+ .rodata        0x000000000040b9d0       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
+ *fill*         0x000000000040ba42        0xe 
+ .rodata        0x000000000040ba50       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
+ *fill*         0x000000000040bac2        0xe 
+ .rodata        0x000000000040bad0       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
+ *fill*         0x000000000040bb42        0xe 
+ .rodata        0x000000000040bb50       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
  .rodata.str1.1
-                0x000000000040aa02        0x6 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
- *fill*         0x000000000040aa02        0xe 
- .rodata        0x000000000040aa10       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+                0x000000000040bbc2        0x6 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+ *fill*         0x000000000040bbc2        0xe 
+ .rodata        0x000000000040bbd0       0x72 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
 
 .rodata1
  *(.rodata1)
 
-.eh_frame_hdr   0x000000000040aa84      0x5b4
+.eh_frame_hdr   0x000000000040bc44      0x684
  *(.eh_frame_hdr)
- .eh_frame_hdr  0x000000000040aa84      0x5b4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
-                0x000000000040aa84                __GNU_EH_FRAME_HDR
+ .eh_frame_hdr  0x000000000040bc44      0x684 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+                0x000000000040bc44                __GNU_EH_FRAME_HDR
  *(.eh_frame_entry .eh_frame_entry.*)
 
-.eh_frame       0x000000000040b038     0x1748
+.eh_frame       0x000000000040c2c8     0x1a50
  *(.eh_frame)
- .eh_frame      0x000000000040b038       0x58 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .eh_frame      0x000000000040c2c8       0x58 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
                                          0x5c (size before relaxing)
- *fill*         0x000000000040b090        0x0 
- .eh_frame      0x000000000040b090       0x28 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ *fill*         0x000000000040c320        0x0 
+ .eh_frame      0x000000000040c320       0x28 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
                                          0x40 (size before relaxing)
- .eh_frame      0x000000000040b0b8        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
- .eh_frame      0x000000000040b0b8      0x120 ../../../SourceFiles/Lab1.o
-                                        0x138 (size before relaxing)
- .eh_frame      0x000000000040b1d8      0x1e0 ../../../SourceFiles/CFilter2.o
-                                        0x1f8 (size before relaxing)
- .eh_frame      0x000000000040b3b8       0x28 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
+ .eh_frame      0x000000000040c348        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .eh_frame      0x000000000040c348      0x130 ../../../SourceFiles/Lab1.o
+                                        0x148 (size before relaxing)
+ .eh_frame      0x000000000040c478      0x2e0 ../../../SourceFiles/CFilter2.o
+                                        0x2f8 (size before relaxing)
+ .eh_frame      0x000000000040c758      0x1f8 ../../../SourceFiles/CCalculator.o
+                                        0x210 (size before relaxing)
+ .eh_frame      0x000000000040c950       0x28 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
                                          0x40 (size before relaxing)
- .eh_frame      0x000000000040b3e0      0x630 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+ .eh_frame      0x000000000040c978      0x630 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
                                         0x648 (size before relaxing)
- .eh_frame      0x000000000040ba10       0xd0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
+ .eh_frame      0x000000000040cfa8       0xd0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
                                          0xe8 (size before relaxing)
- .eh_frame      0x000000000040bae0      0x398 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+ .eh_frame      0x000000000040d078      0x398 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
                                         0x3b0 (size before relaxing)
- .eh_frame      0x000000000040be78       0xc8 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
+ .eh_frame      0x000000000040d410       0xc8 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
                                          0xe0 (size before relaxing)
- .eh_frame      0x000000000040bf40       0xc0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
+ .eh_frame      0x000000000040d4d8       0xc0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
                                          0xd8 (size before relaxing)
- .eh_frame      0x000000000040c000      0x108 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
+ .eh_frame      0x000000000040d598      0x108 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
                                         0x120 (size before relaxing)
- .eh_frame      0x000000000040c108       0xd8 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
+ .eh_frame      0x000000000040d6a0       0xd8 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
                                          0xf0 (size before relaxing)
- .eh_frame      0x000000000040c1e0      0x160 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
+ .eh_frame      0x000000000040d778      0x160 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
                                         0x178 (size before relaxing)
- .eh_frame      0x000000000040c340       0xc8 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
+ .eh_frame      0x000000000040d8d8       0xc8 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
                                          0xe0 (size before relaxing)
- .eh_frame      0x000000000040c408      0x108 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
+ .eh_frame      0x000000000040d9a0      0x108 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
                                         0x120 (size before relaxing)
- .eh_frame      0x000000000040c510       0xe0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
+ .eh_frame      0x000000000040daa8       0xe0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
                                          0xf8 (size before relaxing)
- .eh_frame      0x000000000040c5f0      0x18c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+ .eh_frame      0x000000000040db88      0x18c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
                                         0x1a8 (size before relaxing)
- .eh_frame      0x000000000040c77c        0x4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
+ .eh_frame      0x000000000040dd14        0x4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
  *(.eh_frame.*)
 
-.sframe         0x000000000040c780        0x0
+.sframe         0x000000000040dd18        0x0
  *(.sframe)
- .sframe        0x000000000040c780        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .sframe        0x000000000040dd18        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
  *(.sframe.*)
 
 .gcc_except_table
@@ -489,7 +508,7 @@ LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib
 
 .exception_ranges
  *(.exception_ranges*)
-                0x000000000040ddd8                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+                0x000000000040edd8                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
 
 .eh_frame
  *(.eh_frame)
@@ -508,7 +527,7 @@ LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib
 .exception_ranges
  *(.exception_ranges*)
 
-.tdata          0x000000000040ddd8        0x0
+.tdata          0x000000000040edd8        0x0
                 [!provide]                        PROVIDE (__tdata_start = .)
  *(.tdata .tdata.* .gnu.linkonce.td.*)
 
@@ -516,23 +535,23 @@ LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib
  *(.tbss .tbss.* .gnu.linkonce.tb.*)
  *(.tcommon)
 
-.preinit_array  0x000000000040ddd8        0x0
+.preinit_array  0x000000000040edd8        0x0
                 [!provide]                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end = .)
 
-.init_array     0x000000000040ddd8        0x8
+.init_array     0x000000000040edd8        0x8
                 [!provide]                        PROVIDE (__init_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
  *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
- .init_array    0x000000000040ddd8        0x8 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
+ .init_array    0x000000000040edd8        0x8 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
                 [!provide]                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x000000000040dde0        0x8
+.fini_array     0x000000000040ede0        0x8
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
  *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
- .fini_array    0x000000000040dde0        0x8 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
+ .fini_array    0x000000000040ede0        0x8 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
 
 .ctors
@@ -552,189 +571,198 @@ LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib
 .jcr
  *(.jcr)
 
-.data.rel.ro    0x000000000040dde8        0x0
+.data.rel.ro    0x000000000040ede8        0x0
  *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
  *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
- .data.rel.ro   0x000000000040dde8        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .data.rel.ro   0x000000000040ede8        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
 
-.dynamic        0x000000000040dde8      0x1f0
+.dynamic        0x000000000040ede8      0x1f0
  *(.dynamic)
- .dynamic       0x000000000040dde8      0x1f0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
-                0x000000000040dde8                _DYNAMIC
+ .dynamic       0x000000000040ede8      0x1f0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+                0x000000000040ede8                _DYNAMIC
 
-.got            0x000000000040dfd8       0x10
+.got            0x000000000040efd8       0x10
  *(.got)
- .got           0x000000000040dfd8       0x10 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .got           0x000000000040efd8       0x10 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
  *(.igot)
-                0x000000000040dfe8                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0x18)?0x18:0x0)
+                0x000000000040efe8                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0x18)?0x18:0x0)
 
-.got.plt        0x000000000040dfe8       0xc8
+.got.plt        0x000000000040efe8       0xc8
  *(.got.plt)
- .got.plt       0x000000000040dfe8       0xc8 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
-                0x000000000040dfe8                _GLOBAL_OFFSET_TABLE_
+ .got.plt       0x000000000040efe8       0xc8 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+                0x000000000040efe8                _GLOBAL_OFFSET_TABLE_
  *(.igot.plt)
- .igot.plt      0x000000000040e0b0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .igot.plt      0x000000000040f0b0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
 
-.data           0x000000000040e0c0      0x940
+.data           0x000000000040f0c0      0xae0
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x000000000040e0c0        0x4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
-                0x000000000040e0c0                data_start
-                0x000000000040e0c0                __data_start
- .data          0x000000000040e0c4        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crti.o
- *fill*         0x000000000040e0c4        0x4 
- .data          0x000000000040e0c8        0x8 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
-                0x000000000040e0c8                __dso_handle
- .data          0x000000000040e0d0        0x0 ../../../SourceFiles/Lab1.o
- *fill*         0x000000000040e0d0       0x10 
- .data          0x000000000040e0e0       0xe0 ../../../SourceFiles/CFilter2.o
-                0x000000000040e160                g_xCFilter2_D49144FE
-                0x000000000040e1a0                g_x75628C33E1CC4AC2B9DADEA51CFA9C9AVTbl_D49144FE
- .data          0x000000000040e1c0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
- .data          0x000000000040e1c0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+ .data          0x000000000040f0c0        0x4 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+                0x000000000040f0c0                data_start
+                0x000000000040f0c0                __data_start
+ .data          0x000000000040f0c4        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crti.o
+ *fill*         0x000000000040f0c4        0x4 
+ .data          0x000000000040f0c8        0x8 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
+                0x000000000040f0c8                __dso_handle
+ .data          0x000000000040f0d0        0x0 ../../../SourceFiles/Lab1.o
+ .data          0x000000000040f0d0        0x0 ../../../SourceFiles/CFilter2.o
+ *fill*         0x000000000040f0d0       0x10 
  .data.rel.local
-                0x000000000040e1c0      0x208 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
-                0x000000000040e1c0                g_x00000000000000000000A00300000101VTbl_00000100
-                0x000000000040e200                g_x00000000000000000000A00200000101VTbl_00000100
-                0x000000000040e260                g_x00000000000000000000A00100000101VTbl_00000100
-                0x000000000040e2a0                g_x0000000000000000000000000000FFFEVTbl_00000100
-                0x000000000040e2e0                g_x00000000000000000000A00000000101VTbl_00000100
-                0x000000000040e320                g_x00000000000000000000000000000110VTbl_00000100
-                0x000000000040e360                g_x000000000000000000000000000001FFVTbl_00000100
-                0x000000000040e3a0                g_x00000000000000000000000000000100VTbl_00000100
- .data          0x000000000040e3c8        0x0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
- *fill*         0x000000000040e3c8       0x18 
+                0x000000000040f0e0      0x140 ../../../SourceFiles/CFilter2.o
+                0x000000000040f160                g_xCFilter2_D49144FE
+                0x000000000040f1c0                g_xIEcoCalculator_VTbl_D49144FE
+                0x000000000040f200                g_x75628C33E1CC4AC2B9DADEA51CFA9C9AVTbl_D49144FE
+ .data          0x000000000040f220        0x0 ../../../SourceFiles/CCalculator.o
  .data.rel.local
-                0x000000000040e3e0       0x60 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
-                0x000000000040e3e0                GetIEcoComponentFactoryPtr_00000000000000000000000042757331
-                0x000000000040e400                g_x00000000000000000000000042757331FactoryVTbl
- .data.rel      0x000000000040e440       0xb0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
-                0x000000000040e440                g_x00000000000000000000000042757331Factory
- .data          0x000000000040e4f0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
- *fill*         0x000000000040e4f0       0x10 
+                0x000000000040f220      0x138 ../../../SourceFiles/CCalculator.o
+                0x000000000040f2a0                g_xCCalculator_2DB59A22
+ .data          0x000000000040f358        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
+ .data          0x000000000040f358        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+ *fill*         0x000000000040f358        0x8 
  .data.rel.local
-                0x000000000040e500       0xd8 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
-                0x000000000040e500                g_x00000000000000000000A00100000101VTbl_42757331
-                0x000000000040e540                g_x00000000000000000000000000000100VTbl_42757331
-                0x000000000040e580                g_x00000000000000000000A00000000101VTbl_42757331
-                0x000000000040e5c0                g_Errors
- .data          0x000000000040e5d8        0x0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
- *fill*         0x000000000040e5d8        0x8 
+                0x000000000040f360      0x208 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+                0x000000000040f360                g_x00000000000000000000A00300000101VTbl_00000100
+                0x000000000040f3a0                g_x00000000000000000000A00200000101VTbl_00000100
+                0x000000000040f400                g_x00000000000000000000A00100000101VTbl_00000100
+                0x000000000040f440                g_x0000000000000000000000000000FFFEVTbl_00000100
+                0x000000000040f480                g_x00000000000000000000A00000000101VTbl_00000100
+                0x000000000040f4c0                g_x00000000000000000000000000000110VTbl_00000100
+                0x000000000040f500                g_x000000000000000000000000000001FFVTbl_00000100
+                0x000000000040f540                g_x00000000000000000000000000000100VTbl_00000100
+ .data          0x000000000040f568        0x0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
+ *fill*         0x000000000040f568       0x18 
  .data.rel.local
-                0x000000000040e5e0       0x60 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
-                0x000000000040e5e0                GetIEcoComponentFactoryPtr_0000000000000000000000004D656D31
-                0x000000000040e600                g_x0000000000000000000000004D656D31FactoryVTbl
- .data.rel      0x000000000040e640       0xb0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
-                0x000000000040e640                g_x0000000000000000000000004D656D31Factory
- .data          0x000000000040e6f0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
- *fill*         0x000000000040e6f0       0x10 
+                0x000000000040f580       0x60 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
+                0x000000000040f580                GetIEcoComponentFactoryPtr_00000000000000000000000042757331
+                0x000000000040f5a0                g_x00000000000000000000000042757331FactoryVTbl
+ .data.rel      0x000000000040f5e0       0xb0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
+                0x000000000040f5e0                g_x00000000000000000000000042757331Factory
+ .data          0x000000000040f690        0x0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+ *fill*         0x000000000040f690       0x10 
  .data.rel.local
-                0x000000000040e700       0x30 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
-                0x000000000040e700                g_x00000000000000000000B00000000101VTbl_4D656D31
- .data          0x000000000040e730       0x10 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
-                0x000000000040e730                hex
+                0x000000000040f6a0       0xd8 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+                0x000000000040f6a0                g_x00000000000000000000A00100000101VTbl_42757331
+                0x000000000040f6e0                g_x00000000000000000000000000000100VTbl_42757331
+                0x000000000040f720                g_x00000000000000000000A00000000101VTbl_42757331
+                0x000000000040f760                g_Errors
+ .data          0x000000000040f778        0x0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
+ *fill*         0x000000000040f778        0x8 
  .data.rel.local
-                0x000000000040e740       0x50 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
-                0x000000000040e740                g_x00000000000000000000B00000000102VTbl_4D656D31
- .data          0x000000000040e790        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
- *fill*         0x000000000040e790       0x10 
+                0x000000000040f780       0x60 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
+                0x000000000040f780                GetIEcoComponentFactoryPtr_0000000000000000000000004D656D31
+                0x000000000040f7a0                g_x0000000000000000000000004D656D31FactoryVTbl
+ .data.rel      0x000000000040f7e0       0xb0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
+                0x000000000040f7e0                g_x0000000000000000000000004D656D31Factory
+ .data          0x000000000040f890        0x0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
+ *fill*         0x000000000040f890       0x10 
  .data.rel.local
-                0x000000000040e7a0       0x60 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
-                0x000000000040e7a0                GetIEcoComponentFactoryPtr_00000000000000000000000046534D31
-                0x000000000040e7c0                g_x00000000000000000000000046534D31FactoryVTbl
- .data.rel      0x000000000040e800       0xb0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
-                0x000000000040e800                g_x00000000000000000000000046534D31Factory
- .data          0x000000000040e8b0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
- *fill*         0x000000000040e8b0       0x10 
+                0x000000000040f8a0       0x30 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
+                0x000000000040f8a0                g_x00000000000000000000B00000000101VTbl_4D656D31
+ .data          0x000000000040f8d0       0x10 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
+                0x000000000040f8d0                hex
  .data.rel.local
-                0x000000000040e8c0       0x30 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
-                0x000000000040e8c0                g_x00000000000000000000C00000000101FactoryVTbl_46534D31
- .data          0x000000000040e8f0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
- *fill*         0x000000000040e8f0       0x10 
+                0x000000000040f8e0       0x50 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
+                0x000000000040f8e0                g_x00000000000000000000B00000000102VTbl_4D656D31
+ .data          0x000000000040f930        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
+ *fill*         0x000000000040f930       0x10 
  .data.rel.local
-                0x000000000040e900       0x28 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
-                0x000000000040e900                g_x00000000000000000000C00000000107FactoryVTbl_46534D31
- .data          0x000000000040e928        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
- *fill*         0x000000000040e928       0x18 
+                0x000000000040f940       0x60 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
+                0x000000000040f940                GetIEcoComponentFactoryPtr_00000000000000000000000046534D31
+                0x000000000040f960                g_x00000000000000000000000046534D31FactoryVTbl
+ .data.rel      0x000000000040f9a0       0xb0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
+                0x000000000040f9a0                g_x00000000000000000000000046534D31Factory
+ .data          0x000000000040fa50        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
+ *fill*         0x000000000040fa50       0x10 
  .data.rel.local
-                0x000000000040e940       0x30 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
-                0x000000000040e940                g_x00000000000000000000C00000000102FactoryVTbl_46534D31
- .data          0x000000000040e970        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
- *fill*         0x000000000040e970       0x10 
+                0x000000000040fa60       0x30 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
+                0x000000000040fa60                g_x00000000000000000000C00000000101FactoryVTbl_46534D31
+ .data          0x000000000040fa90        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
+ *fill*         0x000000000040fa90       0x10 
  .data.rel.local
-                0x000000000040e980       0x20 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
-                0x000000000040e980                g_x00000000000000000000C00000000108FactoryVTbl_46534D31
- .data          0x000000000040e9a0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+                0x000000000040faa0       0x28 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
+                0x000000000040faa0                g_x00000000000000000000C00000000107FactoryVTbl_46534D31
+ .data          0x000000000040fac8        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
+ *fill*         0x000000000040fac8       0x18 
  .data.rel.local
-                0x000000000040e9a0       0x60 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
-                0x000000000040e9a0                g_x00000000000000000000C00000000104FactoryVTbl_46534D31
- .data          0x000000000040ea00        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
- .data          0x000000000040ea00        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crtn.o
+                0x000000000040fae0       0x30 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
+                0x000000000040fae0                g_x00000000000000000000C00000000102FactoryVTbl_46534D31
+ .data          0x000000000040fb10        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
+ *fill*         0x000000000040fb10       0x10 
+ .data.rel.local
+                0x000000000040fb20       0x20 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
+                0x000000000040fb20                g_x00000000000000000000C00000000108FactoryVTbl_46534D31
+ .data          0x000000000040fb40        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+ .data.rel.local
+                0x000000000040fb40       0x60 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+                0x000000000040fb40                g_x00000000000000000000C00000000104FactoryVTbl_46534D31
+ .data          0x000000000040fba0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
+ .data          0x000000000040fba0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crtn.o
 
 .tm_clone_table
-                0x000000000040ea00        0x0
+                0x000000000040fba0        0x0
  .tm_clone_table
-                0x000000000040ea00        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
+                0x000000000040fba0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
  .tm_clone_table
-                0x000000000040ea00        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
+                0x000000000040fba0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
 
 .data1
  *(.data1)
-                0x000000000040ea00                _edata = .
+                0x000000000040fba0                _edata = .
                 [!provide]                        PROVIDE (edata = .)
-                0x000000000040ea00                . = ALIGN (ALIGNOF (NEXT_SECTION))
-                0x000000000040ea00                __bss_start = .
+                0x000000000040fba0                . = ALIGN (ALIGNOF (NEXT_SECTION))
+                0x000000000040fba0                __bss_start = .
 
-.bss            0x000000000040ea00      0x310
+.bss            0x000000000040fba0      0x310
  *(.dynbss)
- .dynbss        0x000000000040ea00        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .dynbss        0x000000000040fba0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x000000000040ea00        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
- .bss           0x000000000040ea00        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crti.o
- .bss           0x000000000040ea00        0x1 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
- .bss           0x000000000040ea01        0x0 ../../../SourceFiles/Lab1.o
- .bss           0x000000000040ea01        0x0 ../../../SourceFiles/CFilter2.o
- .bss           0x000000000040ea01        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
- *fill*         0x000000000040ea01       0x1f 
- .bss           0x000000000040ea20       0xa0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
-                0x000000000040ea20                g_x00000000000000000000000000000100
- .bss           0x000000000040eac0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
- .bss           0x000000000040eac0      0x1c8 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
-                0x000000000040eac0                g_xCEcoFactoryList1_42757331
-                0x000000000040ec40                g_x00000000000000000000A00000000101_42757331
- .bss           0x000000000040ec88        0x0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
- *fill*         0x000000000040ec88       0x18 
- .bss           0x000000000040eca0       0x60 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
-                0x000000000040eca0                g_xMemMgr1_4D656D31
- .bss           0x000000000040ed00       0x10 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
-                0x000000000040ed00                buf
- .bss           0x000000000040ed10        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
- .bss           0x000000000040ed10        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
- .bss           0x000000000040ed10        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
- .bss           0x000000000040ed10        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
- .bss           0x000000000040ed10        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
- .bss           0x000000000040ed10        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
- .bss           0x000000000040ed10        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
- .bss           0x000000000040ed10        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crtn.o
+ .bss           0x000000000040fba0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .bss           0x000000000040fba0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crti.o
+ .bss           0x000000000040fba0        0x1 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
+ .bss           0x000000000040fba1        0x0 ../../../SourceFiles/Lab1.o
+ .bss           0x000000000040fba1        0x0 ../../../SourceFiles/CFilter2.o
+ .bss           0x000000000040fba1        0x0 ../../../SourceFiles/CCalculator.o
+ .bss           0x000000000040fba1        0x0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
+ *fill*         0x000000000040fba1       0x1f 
+ .bss           0x000000000040fbc0       0xa0 /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+                0x000000000040fbc0                g_x00000000000000000000000000000100
+ .bss           0x000000000040fc60        0x0 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
+ .bss           0x000000000040fc60      0x1c8 /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+                0x000000000040fc60                g_xCEcoFactoryList1_42757331
+                0x000000000040fde0                g_x00000000000000000000A00000000101_42757331
+ .bss           0x000000000040fe28        0x0 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
+ *fill*         0x000000000040fe28       0x18 
+ .bss           0x000000000040fe40       0x60 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
+                0x000000000040fe40                g_xMemMgr1_4D656D31
+ .bss           0x000000000040fea0       0x10 /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
+                0x000000000040fea0                buf
+ .bss           0x000000000040feb0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
+ .bss           0x000000000040feb0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
+ .bss           0x000000000040feb0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
+ .bss           0x000000000040feb0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
+ .bss           0x000000000040feb0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
+ .bss           0x000000000040feb0        0x0 /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+ .bss           0x000000000040feb0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
+ .bss           0x000000000040feb0        0x0 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crtn.o
  *(COMMON)
-                0x000000000040ed10                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x000000000040feb0                . = ALIGN ((. != 0x0)?0x8:0x1)
 
 .lbss
  *(.dynlbss)
  *(.lbss .lbss.* .gnu.linkonce.lb.*)
  *(LARGE_COMMON)
-                0x000000000040ed10                . = ALIGN (0x8)
-                0x000000000040ed10                . = SEGMENT_START ("ldata-segment", .)
+                0x000000000040feb0                . = ALIGN (0x8)
+                0x000000000040feb0                . = SEGMENT_START ("ldata-segment", .)
 
 .lrodata
  *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
 
-.ldata          0x0000000000410d10        0x0
+.ldata          0x0000000000411eb0        0x0
  *(.ldata .ldata.* .gnu.linkonce.l.*)
-                0x0000000000410d10                . = ALIGN ((. != 0x0)?0x8:0x1)
-                0x0000000000410d10                . = ALIGN (0x8)
-                0x000000000040ed10                _end = .
+                0x0000000000411eb0                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x0000000000411eb0                . = ALIGN (0x8)
+                0x000000000040feb0                _end = .
                 [!provide]                        PROVIDE (end = .)
-                0x0000000000410d10                . = DATA_SEGMENT_END (.)
+                0x0000000000411eb0                . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)
@@ -754,27 +782,28 @@ LOAD /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib
 .stab.indexstr
  *(.stab.indexstr)
 
-.comment        0x0000000000000000       0x62
+.comment        0x0000000000000000       0x8f
  *(.comment)
- .comment       0x0000000000000000       0x62 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
+ .comment       0x0000000000000000       0x8f /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/usr/lib/../lib64/crt1.o
                                          0xa8 (size before relaxing)
- .comment       0x0000000000000062       0x38 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
- .comment       0x0000000000000062       0x38 ../../../SourceFiles/Lab1.o
- .comment       0x0000000000000062       0x38 ../../../SourceFiles/CFilter2.o
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
- .comment       0x0000000000000062       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
- .comment       0x0000000000000062       0x38 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
+ .comment       0x000000000000008f       0x38 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtbegin.o
+ .comment       0x000000000000008f       0x38 ../../../SourceFiles/Lab1.o
+ .comment       0x000000000000008f       0x2e ../../../SourceFiles/CFilter2.o
+ .comment       0x000000000000008f       0x2e ../../../SourceFiles/CCalculator.o
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1EntryPoint.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.System1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000053595333.a(CEcoSystem1.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1Factory.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.InterfaceBus1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000042757331.a(CEcoInterfaceBus1.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1Factory.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryManager1.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.MemoryManager1/BuildFiles/Linux/x86_64/StaticRelease/lib0000000000000000000000004D656D31.a(CEcoMemoryAllocator1.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1Factory.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileSystemManagement1.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryManager1.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFileManager1.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoDirectoryInfo1.o)
+ .comment       0x000000000000008f       0x2c /home/vladimir/Dev/Eco.Framework/Eco.FileSystemManagement1/BuildFiles/Linux/x86_64/StaticRelease/lib00000000000000000000000046534D31.a(CEcoFile1.o)
+ .comment       0x000000000000008f       0x38 /home/vladimir/Dev/toolchain/eco-x86_64-linux-gnu-gcc-13.2.0/bin/../lib/gcc/x86_64-linux-gnu/13.2.0/crtend.o
 
 .gnu.build.attributes
  *(.gnu.build.attributes .gnu.build.attributes.*)

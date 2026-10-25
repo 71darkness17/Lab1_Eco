@@ -23,6 +23,7 @@
 #include "IFilter2.h"
 #include "IEcoSystem1.h"
 #include "IdEcoMemoryManager1.h"
+#include "IEcoCalculator.h"
 
 #ifndef __CID_Filter2
 static const UGUID CID_Filter2 = {0x01, 0x10, {0xD4, 0x91, 0x44, 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}};
@@ -36,7 +37,8 @@ typedef struct CFilter2_D49144FE {
 
     /* IFilter2 interface function table */
     IFilter2VTbl* m_pVTblIFilter2;
-
+    /* Aggregated calculator interface */
+    IEcoCalculatorVTbl* m_pVTblIEcoCalculator;
 
     /* Instance initialization */
     int16_t (ECOCALLMETHOD *Init)(/*in*/ CFilter2_D49144FEPtr_t pCMe, /* in */ IEcoUnknownPtr_t pIUnkSystem);
@@ -44,7 +46,6 @@ typedef struct CFilter2_D49144FE {
     int16_t (ECOCALLMETHOD *Create)(/*in*/ CFilter2_D49144FEPtr_t pCMe, /* in */ IEcoUnknownPtr_t pIUnkSystem, /* in */ IEcoUnknownPtr_t pIUnkOuter);
     /* Deletion */
     void (ECOCALLMETHOD *Delete)(/*in*/ CFilter2_D49144FEPtr_t pCMe);
-
 
     /* Reference counter */
     uint32_t m_cRef;
@@ -57,6 +58,9 @@ typedef struct CFilter2_D49144FE {
 
     /* Instance data */
     char_t* m_Name;
+
+    /* Aggregated calculator component as IEcoUnknown for true aggregation */
+    IEcoUnknown* m_pIUnkInner;
 
 } CFilter2_D49144FE;
 
